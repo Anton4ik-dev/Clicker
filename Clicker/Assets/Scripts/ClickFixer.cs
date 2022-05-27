@@ -5,9 +5,10 @@ using TMPro;
 
 public class ClickFixer : MonoBehaviour
 {
+    [SerializeField] private AudioSource mainTheme;
     [SerializeField] private float money, rep;
     [SerializeField] private TextMeshProUGUI moneyTmp, repTmp;
-    private float moneyScaler = 1, repScaler = 1;
+    private float moneyScaler = 1, repScaler = 1, delay;
     private int repLimitation;
     public float MoneyScaler
     {
@@ -33,9 +34,19 @@ public class ClickFixer : MonoBehaviour
     {
         ChangeText("money");
         ChangeText("rep");
+        mainTheme.Play();
+        mainTheme.Pause();
+    }
+    private void Update()
+    {
+        delay -= Time.deltaTime;
+        if (delay <= 0)
+            mainTheme.Pause();
     }
     public void AddMoney()
     {
+        delay = 1;
+        mainTheme.UnPause();
         money += moneyScaler;
         ChangeText("money");
         AddRep();
