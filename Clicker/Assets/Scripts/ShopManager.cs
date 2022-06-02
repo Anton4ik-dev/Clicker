@@ -7,9 +7,14 @@ public class ShopManager : MonoBehaviour
 {
     private Object[] _slotsData;
     private SlotsSO[] _slotsSO;
+    private int cntMusicians = 1;
+    private int nextValue = 3;
+    private int nextSprite = 1;
+    private Object[] spritesForBack;
     [SerializeField] private Transform _instrumentsContentPanel, _musiciansContentPanel, _agitationsContentPanel, _drugsContentPanel;
     [SerializeField] private GameObject _itemSlot;
-    [SerializeField] private Transform guitarist, barabanshik, bas;
+    [SerializeField] private Transform guitarist, barabanshik, bas, electro;
+    [SerializeField] private Transform[] bandPositions = new Transform[3];
     private float _heightSize;
     [SerializeField] private ClickFixer clicker;
     private void Awake()
@@ -17,6 +22,10 @@ public class ShopManager : MonoBehaviour
         _heightSize = -_itemSlot.GetComponent<RectTransform>().sizeDelta.y + 10;
         FillArrayAndSort();
         FillPanel();
+    }
+    private void Start()
+    {
+        spritesForBack = Resources.LoadAll("Themes", typeof(Sprite));
     }
     private void FillArrayAndSort()
     {
@@ -103,6 +112,34 @@ public class ShopManager : MonoBehaviour
             TurnOnInstruments(so.typeOfMusician.ToString());
             clicker.ChangeText("money");
             clicker.ChangeText("rep");
+            cntMusicians++;
+            if(cntMusicians == nextValue)
+            {
+                nextValue++;
+                if(nextValue == 3)
+                {
+                    bandPositions[1].gameObject.SetActive(true);
+                    for (int i = 0, cnt = 0; i < bandPositions[0].childCount; i++)
+                    {
+                        if (bandPositions[0].GetChild(i).gameObject.activeSelf)
+                            bandPositions[1].GetChild(cnt++).GetComponent<Image>().sprite = bandPositions[0].GetChild(i).GetComponent<Image>().sprite;
+                    }
+                    bandPositions[0].gameObject.SetActive(false);
+                }
+                if (nextValue == 4)
+                {
+                    bandPositions[1].gameObject.SetActive(false);
+                    bandPositions[0].gameObject.SetActive(true);
+                    bandPositions[2].gameObject.SetActive(true);
+                    for (int i = 0; i < bandPositions[0].childCount; i++)
+                    {
+                        bandPositions[2].GetChild(i).GetComponent<Image>().sprite = bandPositions[0].GetChild(i).GetComponent<Image>().sprite;
+                    }
+                    bandPositions[0].gameObject.SetActive(false);
+                }
+                Sprite m_sprite = (Sprite)spritesForBack[nextSprite++];
+                gameObject.GetComponent<Image>().sprite = m_sprite;
+            }
             DisableSlot(slot);
         }
     }
@@ -114,7 +151,7 @@ public class ShopManager : MonoBehaviour
             clicker.Rep += so.slotChangeValues[0];
             clicker.ChangeText("money");
             clicker.ChangeText("rep");
-            DisableSlot(slot);
+            //DisableSlot(slot);
         }
     }
     private void BuySlotDrugs(Transform slot, SlotsSO so)
@@ -148,6 +185,10 @@ public class ShopManager : MonoBehaviour
             case "bas":
                 bas.gameObject.SetActive(true);
                 bas.GetComponent<Image>().sprite = so.slotSprite;
+                break;
+            case "electro":
+                electro.gameObject.SetActive(true);
+                electro.GetComponent<Image>().sprite = so.slotSprite;
                 break;
         }
     }

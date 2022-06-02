@@ -11,7 +11,7 @@ public class ClickFixer : MonoBehaviour
     [SerializeField] private float money, rep;
     [SerializeField] private TextMeshProUGUI moneyTmp, repTmp;
     [SerializeField] private GameObject[] managerButtons = new GameObject[3];
-    private Object[] spritesForBack;
+    
     private float moneyScaler = 1, repScaler = 1;
     private int repLimitation;
     public float MoneyScaler
@@ -36,7 +36,6 @@ public class ClickFixer : MonoBehaviour
     }
     private void Start()
     {
-        spritesForBack = Resources.LoadAll("Themes", typeof(Sprite));
         ChangeText("money");
         ChangeText("rep");
         mainTheme.Play();
@@ -71,8 +70,6 @@ public class ClickFixer : MonoBehaviour
                 managerButtons[i].GetComponent<Image>().color = Color.white;
                 managerButtons[i].GetComponent<Button>().interactable = true;
             }
-            //Sprite m_sprite = (Sprite)spritesForBack[1];
-            //gameObject.GetComponent<Image>().sprite = m_sprite;
         }
     }
     public void ChangeText(string whichText)

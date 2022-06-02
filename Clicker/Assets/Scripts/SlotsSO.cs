@@ -6,7 +6,7 @@ public class SlotsSO : ScriptableObject
 {
     public enum TypeOf { instrument, musician, agitation, drug}
     public TypeOf typeOfSlot;
-    public enum TypeOfMusician { guitarist, baraban, bas, none}
+    public enum TypeOfMusician { guitarist, baraban, bas, electro, none}
     public TypeOfMusician typeOfMusician;
     [Space]
     public Sprite slotSprite;
