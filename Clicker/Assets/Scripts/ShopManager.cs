@@ -91,19 +91,20 @@ public class ShopManager : MonoBehaviour
                     _musiciansContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
                     slotCopy = Instantiate(_itemSlot, _musiciansContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotMusician(slotCopy, _slotsSO[n]));
+                    slotCopy.gameObject.SetActive(true);
                     break;
                 case "agitation":
                     _agitationsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
                     slotCopy = Instantiate(_itemSlot, _agitationsContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotAgitation(slotCopy, _slotsSO[n]));
+                    slotCopy.gameObject.SetActive(true);
                     break;
                 case "drug":
-                    _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+                    slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
                     if (_slotsSO[i].typeOfMusician.ToString() != "solist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     }
-                    slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotDrugs(slotCopy, _slotsSO[n]));
                     break;
             }
@@ -133,6 +134,7 @@ public class ShopManager : MonoBehaviour
             clicker.RepScaler += so.slotChangeValues[1];
             CheckMusician(so);
             TurnOnInstruments(so.typeOfMusician.ToString());
+            TurnOnInstrumentsInBlack(so.typeOfMusician.ToString());
             clicker.ChangeText("money");
             clicker.ChangeText("rep");
             cntMusicians++;
@@ -192,8 +194,8 @@ public class ShopManager : MonoBehaviour
             clicker.Money -= so.slotCost;
             clicker.MoneyScaler += so.slotChangeValues[0];
             clicker.RepScaler += so.slotChangeValues[1];
-            TurnOnInstrumentsInBlack(so.typeOfMusician.ToString());
             clicker.ChangeText("money");
+            clicker.Karma++;
             DisableSlot(slot);
         }
     }

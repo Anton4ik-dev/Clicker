@@ -17,6 +17,5 @@ MonoBehaviour:
   slotSprite: {fileID: 0}
   slotName: 'Fender Stratocaster '
   slotCost: 85
-  slotBustDiscription: " + 20 \u0437\u0430 \u043A\u043B\u0438\u043A, \u0432\u044B\u0433\u043B\u044F\u0434\u0438\u0442
-    \u0443\u043A\u0440\u0430\u0434\u0435\u043D\u043D\u043E\u0439"
+  slotBustDiscription: " + 20 \u0437\u0430 \u043A\u043B\u0438\u043A"
   slotChangeValues: 0000000000000000

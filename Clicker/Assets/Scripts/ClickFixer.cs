@@ -11,7 +11,11 @@ public class ClickFixer : MonoBehaviour
     [SerializeField] private float money, rep;
     [SerializeField] private TextMeshProUGUI moneyTmp, repTmp;
     [SerializeField] private GameObject[] managerButtons = new GameObject[3];
-    
+    [SerializeField] private GameObject managerInfo;
+    [SerializeField] private float winningCondMoney, winningCondRep, karmaLimit;
+    [SerializeField] private float chastotaRep, menegerOpenedValue;
+    private float karma = 0;
+    private bool eventHappened = true;
     private float moneyScaler = 1, repScaler = 1;
     private int repLimitation;
     public float MoneyScaler
@@ -34,16 +38,17 @@ public class ClickFixer : MonoBehaviour
         get { return money; }
         set { money = value; }
     }
+    public float Karma
+    {
+        get { return karma; }
+        set { karma = value; }
+    }
     private void Start()
     {
         ChangeText("money");
         ChangeText("rep");
         mainTheme.Play();
         mainTheme.Pause();
-    }
-    private void Update()
-    {
-        
     }
     public void AddMoney()
     {
@@ -52,19 +57,32 @@ public class ClickFixer : MonoBehaviour
         money += moneyScaler;
         ChangeText("money");
         AddRep();
+        if(winningCondMoney <= money && winningCondRep <= rep)
+        {
+            if(karma < karmaLimit)
+            {
+                //good
+            } else
+            {
+                //bad
+            }
+        }
         //ChangePos();
     }
     private void AddRep()
     {
         repLimitation++;
-        if (repLimitation == 10)
+        if (repLimitation == chastotaRep)
         {
             rep += repScaler;
             ChangeText("rep");
             repLimitation = 0;
         }
-        if(rep >= 110)
+        if(rep >= menegerOpenedValue && eventHappened)
         {
+            eventHappened = false;
+            managerInfo.SetActive(true);
+            Destroy(managerInfo, 5);
             for (int i = 0; i < managerButtons.Length; i++)
             {
                 managerButtons[i].GetComponent<Image>().color = Color.white;
