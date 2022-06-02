@@ -7,13 +7,14 @@ using UnityEngine.EventSystems;
 
 public class ClickFixer : MonoBehaviour
 {
-    [SerializeField] private AudioSource mainTheme;
+    public static AudioSource mainTheme;
     [SerializeField] private float money, rep;
     [SerializeField] private TextMeshProUGUI moneyTmp, repTmp;
     [SerializeField] private GameObject[] managerButtons = new GameObject[3];
     [SerializeField] private GameObject managerInfo;
     [SerializeField] private float winningCondMoney, winningCondRep, karmaLimit;
     [SerializeField] private float chastotaRep, menegerOpenedValue;
+    [SerializeField] private GameObject goodPanel, badPanel;
     private float karma = 0;
     private bool eventHappened = true;
     private float moneyScaler = 1, repScaler = 1;
@@ -45,6 +46,7 @@ public class ClickFixer : MonoBehaviour
     }
     private void Start()
     {
+        mainTheme = GameObject.Find("AudioManager").GetComponent<AudioSource>();
         ChangeText("money");
         ChangeText("rep");
         mainTheme.Play();
@@ -59,12 +61,13 @@ public class ClickFixer : MonoBehaviour
         AddRep();
         if(winningCondMoney <= money && winningCondRep <= rep)
         {
-            if(karma < karmaLimit)
+            gameObject.SetActive(false);
+            if (karma < karmaLimit)
             {
-                //good
+                goodPanel.SetActive(true);
             } else
             {
-                //bad
+                badPanel.SetActive(true);   
             }
         }
         //ChangePos();

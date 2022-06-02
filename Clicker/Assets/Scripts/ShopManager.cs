@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject _itemSlot;
     [SerializeField] private Transform guitarist, barabanshik, bas, electro;
     [SerializeField] private Transform[] bandPositions = new Transform[3];
+    [SerializeField] private AudioSource[] bandMusic = new AudioSource[3];
     private float _heightSize;
     [SerializeField] private ClickFixer clicker;
     private void Awake()
@@ -81,9 +82,13 @@ public class ShopManager : MonoBehaviour
             {
                 case "instrument":
                     slotCopy = Instantiate(_itemSlot, _instrumentsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "solist")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
                     {
                         slotCopy.gameObject.SetActive(false);
+                    } else
+                    {
+                        _instrumentsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+                        slotCopy.gameObject.SetActive(true);
                     }
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotInstrument(slotCopy, _slotsSO[n]));
                     break;
@@ -101,9 +106,13 @@ public class ShopManager : MonoBehaviour
                     break;
                 case "drug":
                     slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "solist")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
                     {
                         slotCopy.gameObject.SetActive(false);
+                    } else
+                    {
+                        _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+                        slotCopy.gameObject.SetActive(true);
                     }
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotDrugs(slotCopy, _slotsSO[n]));
                     break;
@@ -117,6 +126,7 @@ public class ShopManager : MonoBehaviour
     }
     private void BuySlotInstrument(Transform slot, SlotsSO so)
     {
+        AudioManagerScript.sfxSound.Play();
         if (clicker.Money >= so.slotCost)
         {
             clicker.Money -= so.slotCost;
@@ -127,7 +137,8 @@ public class ShopManager : MonoBehaviour
     }
     private void BuySlotMusician(Transform slot, SlotsSO so)
     {
-        if(clicker.Rep >= so.slotCost)
+        AudioManagerScript.sfxSound.Play();
+        if (clicker.Rep >= so.slotCost)
         {
             clicker.Rep -= so.slotCost;
             clicker.MoneyScaler += so.slotChangeValues[0];
@@ -142,6 +153,9 @@ public class ShopManager : MonoBehaviour
             {
                 if(nextValue == 3)
                 {
+                    ClickFixer.mainTheme = bandMusic[1];
+                    ClickFixer.mainTheme.Play();
+                    ClickFixer.mainTheme.Pause();
                     bandPositions[1].gameObject.SetActive(true);
                     for (int i = 0, cnt = 0; i < bandPositions[0].childCount; i++)
                     {
@@ -152,6 +166,9 @@ public class ShopManager : MonoBehaviour
                 }
                 if (nextValue == 4)
                 {
+                    ClickFixer.mainTheme = bandMusic[2];
+                    ClickFixer.mainTheme.Play();
+                    ClickFixer.mainTheme.Pause();
                     bandPositions[1].gameObject.SetActive(false);
                     bandPositions[0].gameObject.SetActive(true);
                     bandPositions[2].gameObject.SetActive(true);
@@ -170,6 +187,7 @@ public class ShopManager : MonoBehaviour
     }
     private void BuySlotAgitation(Transform slot, SlotsSO so)
     {
+        AudioManagerScript.sfxSound.Play();
         if (clicker.Money >= so.slotCost)
         {
             timerIsActive = true;
@@ -189,6 +207,7 @@ public class ShopManager : MonoBehaviour
     }
     private void BuySlotDrugs(Transform slot, SlotsSO so)
     {
+        AudioManagerScript.sfxSound.Play();
         if (clicker.Money >= so.slotCost)
         {
             clicker.Money -= so.slotCost;

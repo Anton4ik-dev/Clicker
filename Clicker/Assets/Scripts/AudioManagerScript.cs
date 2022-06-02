@@ -6,18 +6,20 @@ using UnityEngine.Audio;
 public class AudioManagerScript : MonoBehaviour
 {
     [SerializeField] private AudioMixer mixer;
+    public static AudioSource sfxSound;
     [HideInInspector] public const string MUSIC_KEY = "musicVolume";
     [HideInInspector] public const string SFX_KEY = "sfxVolume";
     public static float delay;
     private void Awake()
     {
+        sfxSound = transform.GetChild(0).GetComponent<AudioSource>();
         LoadVolume();
     }
     private void Update()
     {
         delay -= Time.deltaTime;
         if (delay <= 0)
-            GetComponent<AudioSource>().Pause();
+            ClickFixer.mainTheme.Pause();
     }
     private void LoadVolume()
     {
