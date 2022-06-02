@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: baraban
   m_EditorClassIdentifier: 
   typeOfSlot: 0
-  typyOfMusician: 1
+  typeOfMusician: 1
   slotSprite: {fileID: 0}
   slotName: Barabans
   slotCost: 25

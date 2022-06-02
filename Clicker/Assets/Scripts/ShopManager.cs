@@ -7,7 +7,7 @@ public class ShopManager : MonoBehaviour
 {
     private Object[] _slotsData;
     private SlotsSO[] _slotsSO;
-    [SerializeField] private Transform _instrumentsContentPanel, _musiciansContentPanel, _agitationsContentPanel;
+    [SerializeField] private Transform _instrumentsContentPanel, _musiciansContentPanel, _agitationsContentPanel, _drugsContentPanel;
     [SerializeField] private GameObject _itemSlot;
     [SerializeField] private Transform guitarist, barabanshik, bas;
     private float _heightSize;
@@ -50,7 +50,7 @@ public class ShopManager : MonoBehaviour
             {
                 case "instrument":
                     slotCopy = Instantiate(_itemSlot, _instrumentsContentPanel).transform;
-                    if (_slotsSO[i].typyOfMusician.ToString() != "guitarist")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     } else
@@ -69,12 +69,17 @@ public class ShopManager : MonoBehaviour
                     slotCopy = Instantiate(_itemSlot, _agitationsContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotAgitation(slotCopy, _slotsSO[n]));
                     break;
+                case "drug":
+                    _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+                    slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
+                    slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotDrugs(slotCopy, _slotsSO[n]));
+                    break;
             }
             slotCopy.GetChild(1).GetComponent<Image>().sprite = _slotsSO[i].slotSprite;
             slotCopy.GetChild(2).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotName;
             slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString();
             slotCopy.GetChild(4).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotBustDiscription;            
-            slotCopy.GetChild(5).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].typyOfMusician.ToString();            
+            slotCopy.GetChild(5).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].typeOfMusician.ToString();            
         }
     }
     private void BuySlotInstrument(Transform slot, SlotsSO so)
@@ -95,7 +100,7 @@ public class ShopManager : MonoBehaviour
             clicker.MoneyScaler += so.slotChangeValues[0];
             clicker.RepScaler += so.slotChangeValues[1];
             CheckMusician(so);
-            TurnOnInstruments(so.typyOfMusician.ToString());
+            TurnOnInstruments(so.typeOfMusician.ToString());
             clicker.ChangeText("money");
             clicker.ChangeText("rep");
             DisableSlot(slot);
@@ -112,6 +117,17 @@ public class ShopManager : MonoBehaviour
             DisableSlot(slot);
         }
     }
+    private void BuySlotDrugs(Transform slot, SlotsSO so)
+    {
+        if (clicker.Money >= so.slotCost)
+        {
+            clicker.Money -= so.slotCost;
+            clicker.MoneyScaler += so.slotChangeValues[0];
+            clicker.RepScaler += so.slotChangeValues[1];
+            clicker.ChangeText("money");
+            DisableSlot(slot);
+        }
+    }
     private void DisableSlot(Transform slot)
     {
         slot.parent.GetComponent<RectTransform>().sizeDelta -= new Vector2(0, _heightSize);
@@ -119,7 +135,7 @@ public class ShopManager : MonoBehaviour
     }
     private void CheckMusician(SlotsSO so)
     {
-        switch(so.typyOfMusician.ToString())
+        switch(so.typeOfMusician.ToString())
         {
             case "guitarist":
                 guitarist.gameObject.SetActive(true);

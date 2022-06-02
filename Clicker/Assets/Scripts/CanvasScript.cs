@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -14,10 +16,10 @@ public class CanvasScript : MonoBehaviour
     [SerializeField] private GameObject game;
     [SerializeField] private GameObject pause;
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject tutor;
 
     [HideInInspector] public const string MIXER_MUSIC = "MusicVolume";
     [HideInInspector] public const string MIXER_SFX = "SFXVolume";
-
     private void Start()
     {
         musicSlider.value = PlayerPrefs.GetFloat(AudioManagerScript.MUSIC_KEY, 1f);
@@ -30,12 +32,12 @@ public class CanvasScript : MonoBehaviour
     }
     public void StartGame()
     {
+        EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>().text = "Continue";
         mainMenu.SetActive(false);
         game.SetActive(true);
     }
     public void Pause()
     {
-        game.SetActive(false);
         pause.SetActive(true);
         Time.timeScale = 0;
     }
@@ -67,6 +69,7 @@ public class CanvasScript : MonoBehaviour
     {
         mainMenu.SetActive(true);
         pause.SetActive(false);
+        game.SetActive(false);
         Time.timeScale = 1;
     }
     public void OpenPanel(Image panel)

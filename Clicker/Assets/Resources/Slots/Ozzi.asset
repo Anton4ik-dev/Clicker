@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ozzi
   m_EditorClassIdentifier: 
   typeOfSlot: 1
-  typyOfMusician: 1
+  typeOfMusician: 2
   slotSprite: {fileID: 0}
   slotName: Ozzi
   slotCost: 70

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: kurt
   m_EditorClassIdentifier: 
   typeOfSlot: 1
-  typyOfMusician: 2
+  typeOfMusician: 1
   slotSprite: {fileID: 0}
   slotName: Kurt
   slotCost: 0

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Reklama
   m_EditorClassIdentifier: 
   typeOfSlot: 2
+  typeOfMusician: 3
   slotSprite: {fileID: 0}
   slotName: Reklama
   slotCost: 100
-  slotBuff: +50
+  slotBustDiscription: 
   slotChangeValues: 32000000
