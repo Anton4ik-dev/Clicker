@@ -10,7 +10,10 @@ public class ShopManager : MonoBehaviour
     private int cntMusicians = 1;
     private int nextValue = 3;
     private int nextSprite = 1;
+    private float delayTime, saverForChangers, saverForDelay;
+    private bool timerIsActive = false;
     private Object[] spritesForBack;
+    [SerializeField] private Image timer;
     [SerializeField] private Transform _instrumentsContentPanel, _musiciansContentPanel, _agitationsContentPanel, _drugsContentPanel;
     [SerializeField] private GameObject _itemSlot;
     [SerializeField] private Transform guitarist, barabanshik, bas, electro;
@@ -26,6 +29,25 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         spritesForBack = Resources.LoadAll("Themes", typeof(Sprite));
+    }
+    private void Update()
+    {
+        if(timerIsActive)
+        {
+            timer.gameObject.SetActive(true);
+            delayTime -= Time.deltaTime;
+            timer.fillAmount = 1-(delayTime / saverForDelay);
+            if (delayTime <= 0)
+            {
+                for (int i = 0; i < _agitationsContentPanel.childCount; i++)
+                {
+                    _agitationsContentPanel.GetChild(i).GetChild(0).GetComponent<Button>().interactable = true;
+                }
+                clicker.RepScaler -= saverForChangers;
+                timerIsActive = false;
+                timer.gameObject.SetActive(false);
+            }
+        }
     }
     private void FillArrayAndSort()
     {
@@ -59,12 +81,9 @@ public class ShopManager : MonoBehaviour
             {
                 case "instrument":
                     slotCopy = Instantiate(_itemSlot, _instrumentsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "solist")
                     {
                         slotCopy.gameObject.SetActive(false);
-                    } else
-                    {
-                        _instrumentsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
                     }
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotInstrument(slotCopy, _slotsSO[n]));
                     break;
@@ -80,6 +99,10 @@ public class ShopManager : MonoBehaviour
                     break;
                 case "drug":
                     _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+                    if (_slotsSO[i].typeOfMusician.ToString() != "solist")
+                    {
+                        slotCopy.gameObject.SetActive(false);
+                    }
                     slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotDrugs(slotCopy, _slotsSO[n]));
                     break;
@@ -115,7 +138,6 @@ public class ShopManager : MonoBehaviour
             cntMusicians++;
             if(cntMusicians == nextValue)
             {
-                nextValue++;
                 if(nextValue == 3)
                 {
                     bandPositions[1].gameObject.SetActive(true);
@@ -137,8 +159,9 @@ public class ShopManager : MonoBehaviour
                     }
                     bandPositions[0].gameObject.SetActive(false);
                 }
+                nextValue++;
                 Sprite m_sprite = (Sprite)spritesForBack[nextSprite++];
-                gameObject.GetComponent<Image>().sprite = m_sprite;
+                GameObject.Find("GameScreen").GetComponent<Image>().sprite = m_sprite;
             }
             DisableSlot(slot);
         }
@@ -147,8 +170,16 @@ public class ShopManager : MonoBehaviour
     {
         if (clicker.Money >= so.slotCost)
         {
+            timerIsActive = true;
+            delayTime = so.slotChangeValues[1];
+            saverForDelay = so.slotChangeValues[1];
+            for (int i = 0; i < _agitationsContentPanel.childCount; i++)
+            {
+                _agitationsContentPanel.GetChild(i).GetChild(0).GetComponent<Button>().interactable = false;
+            }
             clicker.Money -= so.slotCost;
-            clicker.Rep += so.slotChangeValues[0];
+            clicker.RepScaler += so.slotChangeValues[0];
+            saverForChangers = so.slotChangeValues[0];
             clicker.ChangeText("money");
             clicker.ChangeText("rep");
             //DisableSlot(slot);
@@ -161,6 +192,7 @@ public class ShopManager : MonoBehaviour
             clicker.Money -= so.slotCost;
             clicker.MoneyScaler += so.slotChangeValues[0];
             clicker.RepScaler += so.slotChangeValues[1];
+            TurnOnInstrumentsInBlack(so.typeOfMusician.ToString());
             clicker.ChangeText("money");
             DisableSlot(slot);
         }
@@ -186,10 +218,6 @@ public class ShopManager : MonoBehaviour
                 bas.gameObject.SetActive(true);
                 bas.GetComponent<Image>().sprite = so.slotSprite;
                 break;
-            case "electro":
-                electro.gameObject.SetActive(true);
-                electro.GetComponent<Image>().sprite = so.slotSprite;
-                break;
         }
     }
     public void TurnOnInstruments(string whatKind)
@@ -200,6 +228,17 @@ public class ShopManager : MonoBehaviour
             {
                 _instrumentsContentPanel.GetChild(i).gameObject.SetActive(true);
                 _instrumentsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
+            }
+        }
+    }
+    public void TurnOnInstrumentsInBlack(string whatKind)
+    {
+        for (int i = 0; i < _drugsContentPanel.childCount; i++)
+        {
+            if (_drugsContentPanel.GetChild(i).GetChild(5).GetComponent<TextMeshProUGUI>().text == whatKind)
+            {
+                _drugsContentPanel.GetChild(i).gameObject.SetActive(true);
+                _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
             }
         }
     }

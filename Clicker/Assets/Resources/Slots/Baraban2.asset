@@ -15,7 +15,7 @@ MonoBehaviour:
   typeOfSlot: 0
   typeOfMusician: 1
   slotSprite: {fileID: 0}
-  slotName: 'Pearl EXX-705NBR/C704 '
+  slotName: Pearl EXX
   slotCost: 60000
   slotBustDiscription: 
   slotChangeValues: 0000000000000000
