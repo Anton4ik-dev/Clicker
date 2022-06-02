@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b441d755402e030449c63772eb965fdf, type: 3}
-  m_Name: Guitar3
+  m_Name: Slot 2
   m_EditorClassIdentifier: 
-  typeOfSlot: 0
+  typeOfSlot: 3
   typeOfMusician: 0
   slotSprite: {fileID: 0}
-  slotName: 'Gibson ES '
-  slotCost: 20000
-  slotBustDiscription: "+ 90 \u0437\u0430 \u043A\u043B\u0438\u043A"
-  slotChangeValues: 4600000000000000
+  slotName: Fender Mustang
+  slotCost: 4750
+  slotBustDiscription: " + 50 \u0437\u0430 \u043A\u043B\u0438\u043A, \u0432\u044B\u0433\u043B\u044F\u0434\u0438\u0442
+    \u0443\u043A\u0440\u0430\u0434\u0435\u043D\u043D\u043E\u0439"
+  slotChangeValues: 0000000000000000
