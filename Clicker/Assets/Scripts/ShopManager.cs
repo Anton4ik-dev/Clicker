@@ -158,10 +158,11 @@ public class ShopManager : MonoBehaviour
                     ClickFixer.mainTheme.Play();
                     ClickFixer.mainTheme.Pause();
                     bandPositions[1].gameObject.SetActive(true);
-                    for (int i = 0, cnt = 0; i < bandPositions[0].childCount; i++)
+                    for (int i = 0; i < bandPositions[0].childCount; i++)
                     {
+                        Debug.Log(bandPositions[0].GetChild(i).gameObject.activeSelf);
                         if (bandPositions[0].GetChild(i).gameObject.activeSelf)
-                            bandPositions[1].GetChild(cnt++).GetComponent<Image>().sprite = bandPositions[0].GetChild(i).GetComponent<Image>().sprite;
+                            bandPositions[1].GetChild(i).gameObject.SetActive(true);
                     }
                     bandPositions[0].gameObject.SetActive(false);
                 }
@@ -172,13 +173,7 @@ public class ShopManager : MonoBehaviour
                     ClickFixer.mainTheme.Play();
                     ClickFixer.mainTheme.Pause();
                     bandPositions[1].gameObject.SetActive(false);
-                    bandPositions[0].gameObject.SetActive(true);
                     bandPositions[2].gameObject.SetActive(true);
-                    for (int i = 0; i < bandPositions[0].childCount; i++)
-                    {
-                        bandPositions[2].GetChild(i).GetComponent<Image>().sprite = bandPositions[0].GetChild(i).GetComponent<Image>().sprite;
-                    }
-                    bandPositions[0].gameObject.SetActive(false);
                 }
                 nextValue++;
                 Sprite m_sprite = (Sprite)spritesForBack[nextSprite++];
@@ -229,17 +224,14 @@ public class ShopManager : MonoBehaviour
     {
         switch(so.typeOfMusician.ToString())
         {
-            case "guitarist":
-                guitarist.gameObject.SetActive(true);
-                guitarist.GetComponent<Image>().sprite = so.slotSprite;
+            case "electro":
+                electro.gameObject.SetActive(true);
                 break;
             case "baraban":
                 barabanshik.gameObject.SetActive(true);
-                barabanshik.GetComponent<Image>().sprite = so.slotSprite;
                 break;
             case "bas":
                 bas.gameObject.SetActive(true);
-                bas.GetComponent<Image>().sprite = so.slotSprite;
                 break;
         }
     }
