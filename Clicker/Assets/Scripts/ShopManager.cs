@@ -160,7 +160,6 @@ public class ShopManager : MonoBehaviour
                     bandPositions[1].gameObject.SetActive(true);
                     for (int i = 0; i < bandPositions[0].childCount; i++)
                     {
-                        Debug.Log(bandPositions[0].GetChild(i).gameObject.activeSelf);
                         if (bandPositions[0].GetChild(i).gameObject.activeSelf)
                             bandPositions[1].GetChild(i).gameObject.SetActive(true);
                     }
