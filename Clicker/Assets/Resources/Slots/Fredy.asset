@@ -16,6 +16,6 @@ MonoBehaviour:
   typeOfMusician: 1
   slotSprite: {fileID: 0}
   slotName: Fredy
-  slotCost: 1
+  slotCost: 1000
   slotBustDiscription: Baraban
   slotChangeValues: 0000000000000000
