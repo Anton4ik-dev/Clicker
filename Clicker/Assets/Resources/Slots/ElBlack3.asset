@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b441d755402e030449c63772eb965fdf, type: 3}
-  m_Name: Ozzy
+  m_Name: ElBlack3
   m_EditorClassIdentifier: 
-  typeOfSlot: 1
-  typeOfMusician: 2
+  typeOfSlot: 0
+  typeOfMusician: 0
   slotSprite: {fileID: 0}
-  slotName: Ozzu
-  slotCost: 500
-  slotBustDiscription: Bas guitarist
-  slotChangeValues: 0000000003000000
+  slotName: Cort CR250
+  slotCost: 720
+  slotBustDiscription: "+ 40 \u0437\u0430 \u043A\u043B\u0438\u043A"
+  slotChangeValues: 2800000000000000
