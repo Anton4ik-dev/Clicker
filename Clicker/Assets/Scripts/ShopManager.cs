@@ -82,7 +82,7 @@ public class ShopManager : MonoBehaviour
             {
                 case "instrument":
                     slotCopy = Instantiate(_itemSlot, _instrumentsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     } else
@@ -106,7 +106,7 @@ public class ShopManager : MonoBehaviour
                     break;
                 case "drug":
                     slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     } else

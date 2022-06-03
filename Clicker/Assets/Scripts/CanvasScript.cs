@@ -40,6 +40,7 @@ public class CanvasScript : MonoBehaviour
     public void Pause()
     {
         AudioManagerScript.sfxSound.Play();
+        ClickFixer.mainTheme.Pause();
         pause.SetActive(true);
         Time.timeScale = 0;
     }

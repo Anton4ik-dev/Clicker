@@ -18,7 +18,7 @@ public class AudioManagerScript : MonoBehaviour
     private void Update()
     {
         delay -= Time.deltaTime;
-        if (delay <= 0)
+        if (delay <= 0 && ClickFixer.mainTheme != null)
             ClickFixer.mainTheme.Pause();
     }
     private void LoadVolume()
