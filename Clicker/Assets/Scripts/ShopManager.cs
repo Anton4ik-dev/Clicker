@@ -153,6 +153,7 @@ public class ShopManager : MonoBehaviour
             {
                 if(nextValue == 3)
                 {
+                    ClickFixer.mainTheme.Pause();
                     ClickFixer.mainTheme = bandMusic[1];
                     ClickFixer.mainTheme.Play();
                     ClickFixer.mainTheme.Pause();
@@ -166,6 +167,7 @@ public class ShopManager : MonoBehaviour
                 }
                 if (nextValue == 4)
                 {
+                    ClickFixer.mainTheme.Pause();
                     ClickFixer.mainTheme = bandMusic[2];
                     ClickFixer.mainTheme.Play();
                     ClickFixer.mainTheme.Pause();
