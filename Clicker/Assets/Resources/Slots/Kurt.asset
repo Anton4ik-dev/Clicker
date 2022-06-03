@@ -16,6 +16,6 @@ MonoBehaviour:
   typeOfMusician: 0
   slotSprite: {fileID: 0}
   slotName: Kurt
-  slotCost: 1
+  slotCost: 100
   slotBustDiscription: Guitarist
   slotChangeValues: 0000000000000000

@@ -4486,8 +4486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca7fb32a2c8cb14cb7daeb28df82a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 100
-  rep: 100
+  money: 0
+  rep: 0
   moneyTmp: {fileID: 2046700203}
   repTmp: {fileID: 59421201}
   managerButtons:
@@ -4495,11 +4495,11 @@ MonoBehaviour:
   - {fileID: 1689313244}
   - {fileID: 929080673}
   managerInfo: {fileID: 1025667949}
-  winningCondMoney: 1000
-  winningCondRep: 1000
+  winningCondMoney: 150000
+  winningCondRep: 1500
   karmaLimit: 4
   chastotaRep: 10
-  menegerOpenedValue: 110
+  menegerOpenedValue: 60
   goodPanel: {fileID: 369830140}
   badPanel: {fileID: 1235311837}
 --- !u!1 &493061185
