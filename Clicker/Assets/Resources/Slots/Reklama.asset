@@ -17,5 +17,5 @@ MonoBehaviour:
   slotSprite: {fileID: 0}
   slotName: "\u041B\u0438\u0441\u0442\u043E\u0432\u043A\u0438"
   slotCost: 1000
-  slotBustDiscription: "+10 \u0440\u0435\u043F\u044B \u043D\u0430 10 \u0441\u0435\u043A "
+  slotBustDiscription: "+10 rep \u043D\u0430 10s"
   slotChangeValues: 0a0000000a000000

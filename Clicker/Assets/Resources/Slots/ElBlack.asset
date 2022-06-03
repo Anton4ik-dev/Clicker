@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b441d755402e030449c63772eb965fdf, type: 3}
   m_Name: ElBlack
   m_EditorClassIdentifier: 
-  typeOfSlot: 0
-  typeOfMusician: 0
+  typeOfSlot: 3
+  typeOfMusician: 3
   slotSprite: {fileID: 0}
   slotName: Squier Bullet
   slotCost: 80
-  slotBustDiscription: " + 10 \u0437\u0430 \u043A\u043B\u0438\u043A"
+  slotBustDiscription: "+ 10$ \u0437\u0430 \u043A\u043B\u0438\u043A"
   slotChangeValues: 0a00000000000000
