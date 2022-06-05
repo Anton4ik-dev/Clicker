@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Guitar
   m_EditorClassIdentifier: 
   typeOfSlot: 0
-  typeOfMusician: 0
+  typeOfMusician: 3
   slotSprite: {fileID: 0}
   slotName: 'Fender Stratocaster '
   slotCost: 1000

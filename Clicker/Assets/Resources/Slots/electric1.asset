@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: electric1
   m_EditorClassIdentifier: 
   typeOfSlot: 0
-  typeOfMusician: 3
+  typeOfMusician: 0
   slotSprite: {fileID: 0}
   slotName: YAMAHA Pacifica
   slotCost: 200

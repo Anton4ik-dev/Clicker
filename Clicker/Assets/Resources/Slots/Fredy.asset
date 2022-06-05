@@ -17,5 +17,5 @@ MonoBehaviour:
   slotSprite: {fileID: 0}
   slotName: Fredy
   slotCost: 1000
-  slotBustDiscription: Baraban
+  slotBustDiscription: Drummer
   slotChangeValues: 000000000a000000

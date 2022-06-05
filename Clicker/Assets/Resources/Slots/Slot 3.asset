@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slot 3
   m_EditorClassIdentifier: 
   typeOfSlot: 3
-  typeOfMusician: 0
+  typeOfMusician: 3
   slotSprite: {fileID: 0}
   slotName: 'Gibson Les Paul '
   slotCost: 8500

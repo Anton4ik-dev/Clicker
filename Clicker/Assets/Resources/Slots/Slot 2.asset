@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Slot 2
   m_EditorClassIdentifier: 
   typeOfSlot: 3
-  typeOfMusician: 0
+  typeOfMusician: 3
   slotSprite: {fileID: 0}
   slotName: Fender Mustang
   slotCost: 4750

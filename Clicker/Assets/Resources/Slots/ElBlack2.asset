@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ElBlack2
   m_EditorClassIdentifier: 
   typeOfSlot: 3
-  typeOfMusician: 3
+  typeOfMusician: 0
   slotSprite: {fileID: 0}
   slotName: Burny RLC-55
   slotCost: 480

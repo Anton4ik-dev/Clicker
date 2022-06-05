@@ -15,10 +15,12 @@ public class ClickFixer : MonoBehaviour
     [SerializeField] private float winningCondMoney, winningCondRep, karmaLimit;
     [SerializeField] private float chastotaRep, menegerOpenedValue;
     [SerializeField] private GameObject goodPanel, badPanel;
+
     private float karma = 0;
     private bool eventHappened = true;
     private float moneyScaler = 1, repScaler = 1;
     private int repLimitation;
+
     public float MoneyScaler
     {
         get { return moneyScaler; }
@@ -44,6 +46,7 @@ public class ClickFixer : MonoBehaviour
         get { return karma; }
         set { karma = value; }
     }
+
     private void Start()
     {
         mainTheme = GameObject.Find("AudioManager").GetComponent<AudioSource>();
@@ -70,7 +73,6 @@ public class ClickFixer : MonoBehaviour
                 badPanel.SetActive(true);   
             }
         }
-        //ChangePos();
     }
     private void AddRep()
     {
@@ -104,9 +106,5 @@ public class ClickFixer : MonoBehaviour
                 repTmp.text = "Reputation: " + rep;
                 break;
         }
-    }
-    private void ChangePos()
-    {
-        EventSystem.current.currentSelectedGameObject.GetComponent<RectTransform>().localPosition = new Vector3(Random.Range(-885.0f, 885.0f), Random.Range(-425.0f, 425.0f), 0);
     }
 }
