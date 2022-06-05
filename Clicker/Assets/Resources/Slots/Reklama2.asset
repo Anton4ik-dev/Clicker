@@ -15,8 +15,7 @@ MonoBehaviour:
   typeOfSlot: 2
   typeOfMusician: 0
   slotSprite: {fileID: 0}
-  slotName: "\u0432\u044B\u0441\u0442\u0443\u043F\u0438\u0442\u044C \u043D\u0430
-    \u0440\u0430\u0437\u043E\u0433\u0440\u0435\u0432\u0435"
+  slotName: "\u0421\u044B\u0433\u0440\u0430\u0442\u044C \u043D\u0430 \u0440\u0430\u0437\u043E\u0433\u0440\u0435\u0432\u0435"
   slotCost: 10000
-  slotBustDiscription: "+20 \u0440\u0435\u043F\u044B \u043D\u0430 10 \u0441\u0435\u043A "
+  slotBustDiscription: "+20 rep \u043D\u0430 10s"
   slotChangeValues: 140000000a000000

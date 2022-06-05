@@ -17,5 +17,5 @@ MonoBehaviour:
   slotSprite: {fileID: 0}
   slotName: 'Gibson ES '
   slotCost: 20000
-  slotBustDiscription: "+ 90 \u0437\u0430 \u043A\u043B\u0438\u043A"
+  slotBustDiscription: "+ 90$ \u0437\u0430 \u043A\u043B\u0438\u043A"
   slotChangeValues: 5a00000000000000

@@ -98,7 +98,7 @@ public class ClickFixer : MonoBehaviour
         switch(whichText) 
         {
             case "money" : 
-                moneyTmp.text = "Money: " + money;
+                moneyTmp.text = "Money: " + money + "$";
                 break;
             case "rep":
                 repTmp.text = "Reputation: " + rep;

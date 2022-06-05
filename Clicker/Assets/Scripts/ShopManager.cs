@@ -82,44 +82,43 @@ public class ShopManager : MonoBehaviour
             {
                 case "instrument":
                     slotCopy = Instantiate(_itemSlot, _instrumentsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     } else
                     {
                         _instrumentsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
-                        slotCopy.gameObject.SetActive(true);
                     }
+                    slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString() + "$";
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotInstrument(slotCopy, _slotsSO[n]));
                     break;
                 case "musician":
                     _musiciansContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
                     slotCopy = Instantiate(_itemSlot, _musiciansContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotMusician(slotCopy, _slotsSO[n]));
-                    slotCopy.gameObject.SetActive(true);
+                    slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString() + "rep";
                     break;
                 case "agitation":
                     _agitationsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
                     slotCopy = Instantiate(_itemSlot, _agitationsContentPanel).transform;
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotAgitation(slotCopy, _slotsSO[n]));
-                    slotCopy.gameObject.SetActive(true);
+                    slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString() + "$";
                     break;
                 case "drug":
                     slotCopy = Instantiate(_itemSlot, _drugsContentPanel).transform;
-                    if (_slotsSO[i].typeOfMusician.ToString() != "electro")
+                    if (_slotsSO[i].typeOfMusician.ToString() != "guitarist")
                     {
                         slotCopy.gameObject.SetActive(false);
                     } else
                     {
                         _drugsContentPanel.GetComponent<RectTransform>().sizeDelta += new Vector2(0, _heightSize);
-                        slotCopy.gameObject.SetActive(true);
                     }
                     slotCopy.GetChild(0).GetComponent<Button>().onClick.AddListener(() => BuySlotDrugs(slotCopy, _slotsSO[n]));
+                    slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString() + "$";
                     break;
             }
             slotCopy.GetChild(1).GetComponent<Image>().sprite = _slotsSO[i].slotSprite;
             slotCopy.GetChild(2).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotName;
-            slotCopy.GetChild(3).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotCost.ToString();
             slotCopy.GetChild(4).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].slotBustDiscription;            
             slotCopy.GetChild(5).GetComponent<TextMeshProUGUI>().text = _slotsSO[i].typeOfMusician.ToString();            
         }
