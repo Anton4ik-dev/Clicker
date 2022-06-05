@@ -16,6 +16,6 @@ MonoBehaviour:
   typeOfMusician: 2
   slotSprite: {fileID: 0}
   slotName: Ozzu
-  slotCost: 500
+  slotCost: 1
   slotBustDiscription: Bas guitarist
   slotChangeValues: 0000000003000000
