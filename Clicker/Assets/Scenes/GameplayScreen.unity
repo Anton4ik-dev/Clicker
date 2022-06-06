@@ -4674,10 +4674,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "\u041F\u0440\u0438\u0432\u0435\u0442, \u043C\u0435\u043D\u044F \u0437\u043E\u0432\u0443\u0442
-    \u0414\u0430\u043A! \u041F\u0430\u0440\u043D\u0438, \u0434\u0430 \u0432\u044B
-    \u043A\u0440\u0443\u0442\u044B, \u044F \u0445\u043E\u0447\u0443 \u0431\u044B\u0442\u044C
-    \u0432\u0430\u0448\u0438\u043C \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u043E\u043C,
-    \u0436\u0434\u0443 \u0432\u0430\u0441 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0435"
+    \u0414\u0430\u043A! \u041F\u0430\u0440\u0435\u043D\u044C, \u0434\u0430 \u0442\u044B
+    \u043A\u0440\u0443\u0442, \u044F \u0445\u043E\u0447\u0443 \u0431\u044B\u0442\u044C
+    \u0442\u0432\u043E\u0438\u043C \u043C\u0435\u043D\u0435\u0434\u0436\u0435\u0440\u043E\u043C,
+    \u0436\u0434\u0443 \u0442\u0435\u0431\u044F \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5c63e6bf69db06145be37df3fa3a357e, type: 2}
   m_sharedMaterial: {fileID: -8329181895998887197, guid: 5c63e6bf69db06145be37df3fa3a357e, type: 2}
@@ -5904,14 +5904,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: be0d158f3c119ee48ba5e5b122296835, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &652584036
